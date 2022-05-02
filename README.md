@@ -6,4 +6,4 @@ run "npm run dev" to run your application on a localhost
 TypeScript
 Vite
 React
-TailwindCSS (using PostCSS)
+TailwindCSS, PostCSS, HeadlessUI
