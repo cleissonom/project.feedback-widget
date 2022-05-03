@@ -39,7 +39,7 @@ export function FeedbackContentStep({
             <button
                onClick={onFeedbackRestartRequested}
                type="button"
-               className="w-6 h-6 top-4 left-4 flex items-center justify-center absolute hover:text-zinc-100 text-zinc-400 focus:ring-2 focus:ring-offset-2 focus:ring-zinc-400 focus:ring-offset-zinc-900 hover:text-zinc-100 focus:outline-none rounded-md"
+               className="w-6 h-6 top-4 left-4 flex items-center justify-center absolute hover:text-zinc-100 text-zinc-400 focus:ring-2 focus:ring-offset-2 focus:ring-zinc-400 focus:ring-offset-zinc-900 focus:outline-none rounded-md"
                title="Voltar a página anterior do feedback">
                <ArrowLeft
                   className='w-4 h-4'
