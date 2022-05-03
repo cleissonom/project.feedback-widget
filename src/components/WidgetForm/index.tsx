@@ -2,7 +2,6 @@ import { useState } from 'react';
 import bugImageUrl from '../../assets/bug.svg';
 import ideiaImageUrl from '../../assets/ideia.svg';
 import thoughtImageUrl from '../../assets/thought.svg';
-import { CloseButton } from "../CloseButton";
 import { FeedbackContentStep } from './Steps/FeedbackContentStep';
 import { FeedbackTypeStep } from './Steps/FeedbackTypeStep';
 
@@ -34,6 +33,7 @@ export type FeedbackType = keyof typeof feedbackTypes;
 
 export function WidgetForm() {
    const [feedbackType, setFeedbackType] = useState<FeedbackType | null>(null)
+   const handleRestartFeedback = () => setFeedbackType(null)
 
    return (
       <div className="flex flex-col items-center mb-4 bg-zinc-900 p-4 relative rounded-2xl shadow-xl w-[calc(100vw-2.75rem)] sm:w-auto">
@@ -41,7 +41,10 @@ export function WidgetForm() {
          {!feedbackType ? (
             <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType} />
          ) : (
-            <FeedbackContentStep />
+            <FeedbackContentStep
+               feedbackType={feedbackType}
+               onFeedbackRestartRequested={handleRestartFeedback}
+            />
          )}
 
          <footer className="text-xs text-zinc-400 leading-4">

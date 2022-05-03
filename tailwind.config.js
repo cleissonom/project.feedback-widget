@@ -5,8 +5,16 @@ module.exports = {
          colors: {
             brand: "#8557e5",
             brandHover: "#996dff"
+         },
+         borderRadius: {
+            md: "4px"
          }
       },
    },
-   plugins: [],
+   plugins: [
+      require('@tailwindcss/forms')({
+         strategy: 'base', // only generate global styles
+      }),
+      require('tailwind-scrollbar'),
+   ],
 }
