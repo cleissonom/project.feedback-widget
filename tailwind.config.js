@@ -12,9 +12,7 @@ module.exports = {
       },
    },
    plugins: [
-      require('@tailwindcss/forms')({
-         strategy: 'base', // only generate global styles
-      }),
+      require('@tailwindcss/forms'),
       require('tailwind-scrollbar'),
    ],
 }
