@@ -41,7 +41,7 @@ export function WidgetForm() {
    }
 
    return (
-      <div className="flex flex-col items-center mb-4 bg-zinc-900 p-4 relative rounded-2xl shadow-xl w-[calc(100vw-2.75rem)] sm:w-auto">
+      <div className="flex flex-col items-center mb-4 bg-zinc-900 p-4 relative rounded-2xl shadow-xl w-[calc(100vw-2.35rem)] sm:w-auto">
 
          {feedbackSent ? (
             <FeedbackSucessStep onFeedbackRestartRequested={handleRestartFeedback} />

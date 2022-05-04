@@ -1,5 +1,5 @@
 import sucessImageUrl from '../../../assets/sucess.svg';
-import { CloseButton } from '../CloseButton';
+import { CloseButton } from '../../uiComponents/CloseWidgetButton';
 
 interface FeedbackSucessStepProps {
    onFeedbackRestartRequested: () => void;
@@ -23,7 +23,6 @@ export function FeedbackSucessStep({ onFeedbackRestartRequested }: FeedbackSuces
                Quero enviar outro!
             </button>
          </div>
-
       </>
    )
 }

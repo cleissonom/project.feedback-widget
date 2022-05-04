@@ -7,3 +7,13 @@ TypeScript
 Vite
 React
 TailwindCSS, PostCSS, HeadlessUI
+
+Node.js
+Express
+Prisma
+PostgreSQL
+ts-node-dev
+
+Jest
+SWC
+S.O.L.I.D.
