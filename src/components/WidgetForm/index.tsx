@@ -1,36 +1,8 @@
 import { useState } from 'react';
-import bugImageUrl from '../../assets/bug.svg';
-import ideiaImageUrl from '../../assets/ideia.svg';
-import thoughtImageUrl from '../../assets/thought.svg';
+import { FeedbackType, feedbackTypes } from '../../constants/feedbackTypes';
 import { FeedbackContentStep } from './Steps/FeedbackContentStep';
 import { FeedbackSucessStep } from './Steps/FeedbackSucessStep';
 import { FeedbackTypeStep } from './Steps/FeedbackTypeStep';
-
-export const feedbackTypes = {
-   BUG: {
-      title: "Problema",
-      image: {
-         url: bugImageUrl,
-         alt: "Imagem de um inseto"
-      }
-   },
-   IDEIA: {
-      title: "Ideia",
-      image: {
-         url: ideiaImageUrl,
-         alt: "Imagem de um inseto"
-      }
-   },
-   OTHER: {
-      title: "Outro",
-      image: {
-         url: thoughtImageUrl,
-         alt: "Imagem de uma nuvem de pensamento"
-      }
-   },
-};
-
-export type FeedbackType = keyof typeof feedbackTypes;
 
 export function WidgetForm() {
    const [feedbackType, setFeedbackType] = useState<FeedbackType | null>(null)
@@ -53,7 +25,7 @@ export function WidgetForm() {
                   <FeedbackContentStep
                      feedbackType={feedbackType}
                      onFeedbackRestartRequested={handleRestartFeedback}
-                     onFeedbackSent={() => setFeedbackSent(true)}
+                     onFeedbackSent={setFeedbackSent}
                   />
                )}
             </>

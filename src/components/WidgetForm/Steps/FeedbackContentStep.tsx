@@ -1,6 +1,7 @@
 import { ArrowLeft } from "phosphor-react";
 import { FormEvent, useState } from "react";
-import { FeedbackType, feedbackTypes } from "..";
+import { FeedbackType, feedbackTypes } from "../../../constants/feedbackTypes";
+import { sendFeedbackAPI } from "../../../lib/api";
 import { CloseButton } from "../../uiComponents/CloseWidgetButton";
 import { Loading } from "../../uiComponents/Loading";
 import { ScreenshotButton } from "../ScreenshotButton";
@@ -8,7 +9,7 @@ import { ScreenshotButton } from "../ScreenshotButton";
 interface FeedbackContentStepProps {
    feedbackType: FeedbackType;
    onFeedbackRestartRequested: () => void;
-   onFeedbackSent: () => void;
+   onFeedbackSent: (type: boolean) => void;
 }
 
 export function FeedbackContentStep({
@@ -25,12 +26,21 @@ export function FeedbackContentStep({
       setIsSubmittingComment(true)
       event.preventDefault();
 
-      console.log({
-         screenshot,
-         feedbackComment
+      const statusText = await sendFeedbackAPI({
+         type: feedbackType,
+         comment: feedbackComment,
+         screenshot
       })
+
+      console.log(statusText)
+
+      if (statusText === "Created") {
+         onFeedbackSent(true)
+      } else {
+         onFeedbackSent(false);
+      }
+
       setIsSubmittingComment(false)
-      onFeedbackSent()
    }
 
    return (
@@ -68,10 +78,10 @@ export function FeedbackContentStep({
                />
                <button
                   type="submit"
-                  disabled={feedbackComment.replace(/\s+/g, '').length === 0}
+                  disabled={feedbackComment.replace(/\s+/g, '').length === 0 || isSubmittingComment}
                   className="p-2 leading-6 text-sm bg-brand border-transparent flex-1 flex justify-center items-center hover:bg-brandHover focus:outline-none rounded-md focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:hover:bg-brand focus:ring-offset-zinc-900 focus:ring-brand transition-colors"
                >
-                  {isSubmittingComment ? <Loading /> : "Enviar"}
+                  {isSubmittingComment ? <Loading /> : "Enviar Feedback"}
                </button>
             </footer>
          </form>
