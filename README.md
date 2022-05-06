@@ -12,7 +12,7 @@ Node.js
 Express
 Prisma
 PostgreSQL
-ts-node-dev
+ts-node-dev 
 
 Jest
 SWC
